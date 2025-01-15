@@ -1,11 +1,2 @@
 
 
-.hidden{
-    display: none;
-}
-
-.visible{
-    display: block;
-    color: red;
-    margin-top: 10px;
-}
