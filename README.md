@@ -26,14 +26,14 @@ CARACTERISTICAS
 4. ** Resetear **
 -Limpia los resultados de búsqueda y los favoritos con el botón reset.
 
-TECNOLOGI!AS
+TECNOLOGIAS
 
 - HTML: Estructura del contenido.
 - CSS: Estilizado básico.
 - JavaScript: Funcionalidad interactiva.
 - API de Jikan: Consulta de datos de anime.
 
-5.USO 
+USO 
   1. Usar la url aquirida en GitHub para acceder desde el navegador a la pagina web creada.
   2.Escribe el nombre de un anime en el campo de búsqueda y presiona "Buscar".
   3. Haz clicl en una tarjeta para agregarla a favoritos.

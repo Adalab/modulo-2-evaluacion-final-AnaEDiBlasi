@@ -1,13 +1,16 @@
 
 body{
-    background-color: grey;
+    background-color: rgb(105, 72, 225);
 }
 .anime-card {
     margin: 10px;
-    padding: 10px;
+    padding: 20px;
+    display: flex;
     border: 1px solid aqua;
+    border-radius: 40px;
     cursor: pointer;
     display: inline-block;
+    justify-content: center;
     width: 150px;
     text-align: center;
 }
@@ -17,13 +20,25 @@ body{
     
 }
 
-.js_favorites-list li {
-   
-    padding: 10px;
-    margin: 5px 0;
+.favorite{
     display: flex;
-    justify-content: left;
-    align-items: center;
+    align-items: baseline;
+
+}
+
+.favoritelist li {
+    margin: 10px;
+    padding: 20px;
+    display: flex;
+    border: 1px solid aqua;
+    border-radius: 40px;
+    cursor: pointer;
+    display: inline-block;
+    justify-content: center;
+    width: 150px;
+    text-align: center;
+   
+   
 }
 
 .js_favorites-list img {
@@ -33,9 +48,6 @@ body{
 
 button {
     margin: 10px;
-    padding: 8px;
-    border-radius: 100px;
-
-    
+    cursor: pointer;
 }
 
