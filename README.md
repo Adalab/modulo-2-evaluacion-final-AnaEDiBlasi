@@ -44,3 +44,4 @@ USO
      
      - Mejora de diseño y estilos avanzados.
      - Versión responsive para diferentes dispositivos.
+     - mejorar JS
