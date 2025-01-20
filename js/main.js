@@ -17,9 +17,11 @@ const searchButton = document.querySelector('.js_search-button')
 const resultsList = document.querySelector('.js_results-list')
 const favoritesList = document.querySelector('.js_favorites-list')
 const resetButton = document.querySelector('.js_reset-button')
+const logButton = document.querySelector('.js_button-log')
 
 //array para almacenar favoritos
 let favorites = [];
+let animeList = [];
 
 //3.funcion buscar serie de anime 
 //obtiene el valor del input de busqueda y hace una solicitud a la api
@@ -33,7 +35,12 @@ function searchAnime(){
     if (inputValue){//si el usuario ha escrito algo en el campo de busqueda, entonces se ejecugta lo siguiente
         fetch(`https://api.jikan.moe/v4/anime?q=${inputValue}`)//usamos la url  de la api y ${} introducimo el nombre que desea buscar el usuario, promesa
         .then(answer => answer.json())//convertimos la respuesta en json
-        .then(data => renderResults(data.data))//llamamos a renderResults con los datos obtenidos, esta funcion se encarga de tomar esos datos y mostrarlo al usuario, la hemos llamado data pero tambien se llama dat en la api
+        .then(data => {
+            renderResults(data.data)
+            animeList = data.data
+    
+        })
+        //llamamos a renderResults con los datos obtenidos, esta funcion se encarga de tomar esos datos y mostrarlo al usuario, la hemos llamado data pero tambien se llama dat en la api
         .catch(error => console.error('error al buscar anime', error))//maneja los errores si algo sale mal durante la ejecucion de las promesas anteriores,si hay error se ejecutara esta linea y solo imprimira un error en la consola para que nosotros veamos si hay error
     }
 }
@@ -62,6 +69,7 @@ function renderResults(animeList) {
         animeCard.innerHTML = `
             <img src="${animeImage}" alt="${anime.title}" class="anime-image">
             <h3>${anime.title}</h3> 
+            <p>${anime.episodes}</p>
             `;
         //define el contenido  HTML de la tarjeta (animeCard)
         //animeImage, llamamos a la const que creamos arriba y añadimos 
@@ -130,6 +138,7 @@ function addFavorites(anime){
 
 //se encarga de cargar los favoritos en localstorage al iniciar la pagina
 function loadFavorites() {
+
     const storedFavorites = localStorage.getItem('favorites');//esta funcion devuelve la cadena de texto que se guardo con la clave favorites(si existe)
     if (storedFavorites) {//condicion que comprueba si storedFavorites tiene algun valor, si los favoritos estan almacenados en LS
         favorites = JSON.parse(storedFavorites); // si hay  favoritos  los convertimos de vuelta en cadena JSON a objeto, convierte la cadena JSON en arrya de animes y Recuperamos los favoritos desde localStorage
@@ -170,5 +179,13 @@ resetButton.addEventListener('click', (event) =>{
     resetPage()// despues de prevenir el comportamiento por defecto, llamamos a la funcion que restablece la pagina a su estado inicial
 })
 
+function handleLog(){
+   animeList.forEach((anime) =>{
+    console.log(`tengo ${anime.title}`)
+   })
+   
+}
+
+logButton.addEventListener('click',handleLog)
 
 loadFavorites()// llama a la funcion, porqiue es la responsable de cargar los favoritos que estan guardados en LS cuando la pagina se carga, la llamamos aqui para asegurarnos que se carguen automaticamente cuando se carga la pagina, mostrando los animes que el usuario haya marcado como favoritos en una sesion anterior 
