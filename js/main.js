@@ -35,7 +35,7 @@ function searchAnime(){
         .then(answer => answer.json())//convertimos la respuesta en json
         .then(data => renderResults(data.data))//llamamos a renderResults con los datos obtenidos, esta funcion se encarga de tomar esos datos y mostrarlo al usuario, la hemos llamado data pero tambien se llama dat en la api
         .catch(error => console.error('error al buscar anime', error))//maneja los errores si algo sale mal durante la ejecucion de las promesas anteriores,si hay error se ejecutara esta linea y solo imprimira un error en la consola para que nosotros veamos si hay error
-    }//si la busqueda tiene exito los resultados pasan a esta funcion //renderResults()
+    }
 }
 
 
